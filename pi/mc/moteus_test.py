@@ -11,7 +11,7 @@ import sys
 import socket
 
 from get_cpu_command import get_cpu_command
-from moteusController import MotorController, MoteusController
+from moteusController import MoteusController
 from send_mc_states import send_mc_states
 
 # Get local machine name
@@ -25,7 +25,7 @@ async def close_key(m):
 	m.mprint("Moteus Closed Properly")
 
 
-async def main(controller: MotorController):
+async def main(controller: MoteusController):
 	"""
 		TODO: add details
 		Loops until keyboards interrupt
@@ -73,7 +73,7 @@ async def main(controller: MotorController):
 
 if __name__ == '__main__':
 	loop = asyncio.get_event_loop()
-	m = loop.run_until_complete(MotorController.create(ids=[[], [], [2], [], []]))
+	m = loop.run_until_complete(MoteusController.create(ids=[[], [], [2], [], []]))
 	try:
 		loop.run_until_complete(main(m))
 	except KeyboardInterrupt:
